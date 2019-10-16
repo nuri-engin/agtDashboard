@@ -8,6 +8,7 @@ import Notifications from "@material-ui/icons/Notifications";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import UserProfile from "views/UserProfile/UserProfile.js";
+import FarmList from "views/Farms/FarmList";
 import TableList from "views/TableList/TableList.js";
 import Typography from "views/Typography/Typography.js";
 import Icons from "views/Icons/Icons.js";
@@ -18,15 +19,20 @@ const dashboardRoutes = [
   {
     path: "/dashboard",
     name: "Dashboard",
-    rtlName: "لوحة القيادة",
     icon: Dashboard,
     component: DashboardPage,
     layout: "/admin"
   },
   {
+    path: "/farms",
+    name: "Farm List",
+    icon: "content_paste",
+    component: FarmList,
+    layout: "/admin"
+  },
+  {
     path: "/user",
     name: "User Profile",
-    rtlName: "ملف تعريفي للمستخدم",
     icon: Person,
     component: UserProfile,
     layout: "/admin"
@@ -34,7 +40,6 @@ const dashboardRoutes = [
   {
     path: "/table",
     name: "Table List",
-    rtlName: "قائمة الجدول",
     icon: "content_paste",
     component: TableList,
     layout: "/admin"
@@ -42,7 +47,6 @@ const dashboardRoutes = [
   {
     path: "/typography",
     name: "Typography",
-    rtlName: "طباعة",
     icon: LibraryBooks,
     component: Typography,
     layout: "/admin"
@@ -50,7 +54,6 @@ const dashboardRoutes = [
   {
     path: "/icons",
     name: "Icons",
-    rtlName: "الرموز",
     icon: BubbleChart,
     component: Icons,
     layout: "/admin"
@@ -58,7 +61,6 @@ const dashboardRoutes = [
   {
     path: "/maps",
     name: "Maps",
-    rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
     layout: "/admin"
@@ -66,7 +68,6 @@ const dashboardRoutes = [
   {
     path: "/notifications",
     name: "Notifications",
-    rtlName: "إخطارات",
     icon: Notifications,
     component: NotificationsPage,
     layout: "/admin"
