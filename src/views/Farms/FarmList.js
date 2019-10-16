@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import firebase from '../../Firebase';
 
 import CreateFarm from './CreateFarm';
+import EditFarm from './EditFarm';
+import ShowFarm from './ShowFarm';
+
 
 const h4Style = {display:"inline"};
 
@@ -43,6 +46,10 @@ class FarmList extends Component {
         <Router basename={window.location.pathname || ''}>
             <div>
                 <Route path='/createfarm' component={CreateFarm} />
+                <Route path='/editfarm/:id' component={EditFarm} />  
+                <Route path='/createfarm' component={CreateFarm} />
+                <Route path='/showfarm/:id' component={ShowFarm} />
+
                     <div className="container">
                         <div className="panel panel-default">
                             <div className="panel-heading">
@@ -53,7 +60,7 @@ class FarmList extends Component {
                             <div className="panel-body">
                                 <div>
                                     <h4 style={h4Style}><Link to="/createfarm" className="btn btn-primary">Add Farm</Link></h4>
-                                    <h4 style={h4Style}><Link to="/" className="btn btn-info">Return Main</Link></h4>
+                                    <h4 style={h4Style}><Link to="/admin/dashboard" className="btn btn-info">Return Main</Link></h4>
                                 </div>
                                 <table className="table table-stripe">
                                 <thead>
