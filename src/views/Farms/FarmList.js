@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import firebase from '../../Firebase';
 
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import CardGroup from 'react-bootstrap/CardGroup'
+
 import CreateFarm from './CreateFarm';
 import EditFarm from './EditFarm';
 import ShowFarm from './ShowFarm';
@@ -60,18 +64,25 @@ class FarmList extends Component {
                         <h4 style={h4Style}><Link to="/createfarm" className="btn btn-primary">Add Farm</Link></h4>
                         <h4 style={h4Style}><Link to="/admin/dashboard" className="btn btn-info">Return Main</Link></h4>
                       </div>
-                      {this.state.farms.map(farms =>
-                        <div className="card" key={farms.key} style={{width: '18rem'}}>
-                          <div className="card-body" key={farms.key} >
-                            <h5 className="card-title">{farms.title}</h5>
-                            <p className="card-text">{farms.description}</p>
-                            <p className="card-text">{farms.id}</p>
-                            <p className="card-text">
-                              <Link to={`/showfarm/${farms.key}`}>{farms.title}</Link>
-                            </p>
-                          </div>
-                        </div>
-                      )}
+                      <CardGroup>
+                        {this.state.farms.map(farms =>
+                          <Card key={farms.key} style={{ width: '18rem' }}>
+                            <Card.Img variant="top" src="https://via.placeholder.com/150" />
+                            <Card.Body key={farms.key}>
+                              <Card.Title>{farms.title}</Card.Title>
+                              <Card.Text>
+                                {farms.description}
+                              </Card.Text>
+                              <Button variant="primary">
+                                <Link to={`/showfarm/${farms.key}`}>Details</Link>
+                              </Button>
+                            </Card.Body>
+                            <Card.Footer>
+                              <small className="text-muted">Farm ID: {farms.id}</small>
+                            </Card.Footer>
+                          </Card>
+                        )}
+                      </CardGroup>
                     </div>
                   </div>
                 </div>
