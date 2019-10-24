@@ -49,39 +49,31 @@ class FarmList extends Component {
                 <Route path='/editfarm/:id' component={EditFarm} />  
                 <Route path='/createfarm' component={CreateFarm} />
                 <Route path='/showfarm/:id' component={ShowFarm} />
-
-                    <div className="container">
-                        <div className="panel panel-default">
-                            <div className="panel-heading">
-                                <h3 className="panel-title">
-                                    FARM LIST
-                                </h3>
-                            </div>
-                            <div className="panel-body">
-                                <div>
-                                    <h4 style={h4Style}><Link to="/createfarm" className="btn btn-primary">Add Farm</Link></h4>
-                                    <h4 style={h4Style}><Link to="/admin/dashboard" className="btn btn-info">Return Main</Link></h4>
-                                </div>
-                                <table className="table table-stripe">
-                                <thead>
-                                    <tr>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>ID</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.farms.map(farms =>
-                                    <tr key={farms.key}>
-                                        <td><Link to={`/showfarm/${farms.key}`}>{farms.title}</Link></td>
-                                        <td>{farms.description}</td>
-                                        <td>{farms.id}</td>
-                                    </tr>
-                                    )}
-                                </tbody>
-                                </table>
-                        </div>
+                
+                <div className="container">
+                  <div className="panel panel-default">
+                    <div className="panel-heading">
+                      <h3 className="panel-title"> FARM LISTUS </h3>
                     </div>
+                    <div className="panel-body">
+                      <div>
+                        <h4 style={h4Style}><Link to="/createfarm" className="btn btn-primary">Add Farm</Link></h4>
+                        <h4 style={h4Style}><Link to="/admin/dashboard" className="btn btn-info">Return Main</Link></h4>
+                      </div>
+                      <div className="card" style={{width: '18rem'}}>
+                      {this.state.farms.map(farms =>
+                        <div className="card-body" key={farms.key} >
+                          <h5 className="card-title">{farms.title}</h5>
+                          <p className="card-text">{farms.description}</p>
+                          <p className="card-text">{farms.id}</p>
+                          <p className="card-text">
+                            <Link to={`/showfarm/${farms.key}`}>{farms.title}</Link>
+                          </p>
+                          </div>
+                      )}
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
         </Router>
