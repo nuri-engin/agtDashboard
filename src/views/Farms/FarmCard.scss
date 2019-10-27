@@ -1,0 +1,8 @@
+@mixin footerButton {
+    width: 80px;
+    color: black;
+}
+
+.detail_btn {
+    @include footerButton();
+}
