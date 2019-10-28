@@ -78,6 +78,11 @@ class FarmCard extends Component {
                     </Card>
                 )}
                 </CardGroup>
+                <div> <br/> </div>
+
+                <Button variant="primary">
+                    <Link to={`/checkoutform`}>Checkout List</Link>
+                </Button>
         </div>
     );
   }
