@@ -6,6 +6,7 @@ import "./FarmCard.scss";
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import CardGroup from 'react-bootstrap/CardGroup'
+import CheckoutForm from './CheckoutForm';
 
 class FarmCard extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class FarmCard extends Component {
       this.setState({
         farms
       });
-    }
+    };
   
     componentDidMount() {
       this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
@@ -48,43 +49,48 @@ class FarmCard extends Component {
       });
             
       console.log(this.state.order_collection)
-    }
+    };
     
   render() {
-    return (
-        <div>
-            <Button variant="primary">
-              <Link to={`/createfarm`}>Add New Farm</Link>
-            </Button>
-            <div> <br/> </div>
-            <CardGroup>
-                {this.state.farms.map(farms =>
-                    <Card key={farms.key} style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="https://via.placeholder.com/150" />
-                    <Card.Body key={farms.key}>
-                        <Card.Title>
-                          <Link to={`/showfarm/${farms.key}`}>{farms.title}</Link>
-                        </Card.Title>
-                        <Card.Text>
-                        {farms.description}
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Farm ID: {farms.id}</small>
-                        <Button onClick={ () => this.addOrderFn(farms)} variant="outline-info" className='detail_btn'>
-                          +
-                        </Button>
-                    </Card.Footer>
-                    </Card>
-                )}
-                </CardGroup>
-                <div> <br/> </div>
 
-                <Button variant="primary">
-                    <Link to={`/checkoutform`}>Checkout List</Link>
-                </Button>
-        </div>
-    );
+      if(this.props.location.pathname.includes('checkoutform')){
+            return <CheckoutForm orders={this.state.order_collection}/>
+      } else {
+          return (
+
+              <div>
+                  <Button variant="primary">
+                      <Link to={`/createfarm`}>Add New Farm</Link>
+                  </Button>
+                  <div> <br/> </div>
+                  <CardGroup>
+                      {this.state.farms.map(farms =>
+                          <Card key={farms.key} style={{ width: '18rem' }}>
+                              <Card.Img variant="top" src="https://via.placeholder.com/150" />
+                              <Card.Body key={farms.key}>
+                                  <Card.Title>
+                                      <Link to={`/showfarm/${farms.key}`}>{farms.title}</Link>
+                                  </Card.Title>
+                                  <Card.Text>
+                                      {farms.description}
+                                  </Card.Text>
+                              </Card.Body>
+                              <Card.Footer>
+                                  <small className="text-muted">Farm ID: {farms.id}</small>
+                                  <Button onClick={ () => this.addOrderFn(farms)} variant="outline-info" className='detail_btn'>
+                                      +
+                                  </Button>
+                              </Card.Footer>
+                          </Card>
+                      )}
+                  </CardGroup>
+                  <Link to={{pathname: '/checkoutform'}}>
+                      <Button variant="primary"> Checkout Form </Button>
+                  </Link>
+              </div>
+          );
+      }
+
   }
 }
 

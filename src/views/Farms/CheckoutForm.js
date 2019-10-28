@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 
 class CheckoutForm extends Component {
-    constructor(props) {
-        super(props);
-        console.log(props)
+    constructor(props){
+        super(props)
     }
-
-
     render() {
         return (
             <div className="container">
-                <h3> CHECKOUT FORM</h3>
+                <h3>Checkout Form</h3>
             </div>
         );
     }
